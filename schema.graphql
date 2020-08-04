@@ -1,0 +1,179 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+interface ResourceSummary {
+    category: String!
+    id: Int!
+}
+
+type AbilityEffectChange {
+    effectEntries: [Effect!]!
+    versionGroup: NamedApiResource!
+}
+
+type ApiResource implements ResourceSummary {
+    category: String!
+    id: Int!
+}
+
+type BaseItem {
+    effect: String
+    id: Int!
+    image: String
+    name: String!
+}
+
+type ContestComboDetail {
+    useAfter: [NamedApiResource!]
+    useBefore: [NamedApiResource!]
+}
+
+type ContestComboSets {
+    normalSet: ContestComboDetail!
+    superSet: ContestComboDetail!
+}
+
+type Effect {
+    effect: String!
+    language: NamedApiResource!
+}
+
+type Evolution {
+    to: Pokemon!
+    trigger: String!
+}
+
+type Move {
+    accuracy: Int
+    contestCombos: ContestComboSets
+    contestEffect: ApiResource
+    contestType: NamedApiResource
+    damageClass: NamedApiResource!
+    effectChance: Int
+    effectChanges: [AbilityEffectChange!]!
+    effectEntries: [VerboseEffect!]!
+    generation: NamedApiResource!
+    id: Int!
+    meta: MoveMetaData
+    name: String!
+    names: [Name!]!
+    pastValues: [PastMoveStatValues!]!
+    power: Int
+    pp: Int
+    priority: Int!
+    statChanges: [MoveStatChange!]!
+    superContestEffect: ApiResource
+    target: NamedApiResource!
+    type: NamedApiResource!
+}
+
+type MoveMetaData {
+    ailment: NamedApiResource!
+    ailmentChance: Int!
+    category: NamedApiResource!
+    critRate: Int!
+    drain: Int!
+    flinchChance: Int!
+    healing: Int!
+    maxHits: Int
+    maxTurns: Int
+    minHits: Int
+    minTurns: Int
+    statChance: Int!
+}
+
+type MoveStatChange {
+    change: Int!
+    stat: NamedApiResource!
+}
+
+type Name {
+    language: NamedApiResource!
+    name: String!
+}
+
+type NamedApiResource implements ResourceSummary {
+    category: String!
+    id: Int!
+    name: String!
+}
+
+type PastMoveStatValues {
+    accuracy: Int
+    effectChance: Int
+    effectEntries: [VerboseEffect!]!
+    power: Int
+    pp: Int
+    type: NamedApiResource
+    versionGroup: NamedApiResource!
+}
+
+type Pokemon {
+    description: String
+    evolutions: [Evolution]
+    generation: Generation
+    id: Int!
+    image: String!
+    moves(generation: Generation): [Move]
+    name: String!
+    stats: [Stat]!
+    types: [Type]
+}
+
+type PokemonConnection {
+    cursor: Int!
+    hasMore: Boolean!
+    id: Int
+    mainRegion: String
+    name: String
+    pokemon(orderBy: OrderField): [Pokemon!]!
+    versions: [String!]
+}
+
+type Query {
+    itemsOfGeneration(generation: Generation!): [BaseItem]!
+    moveById(moveId: Int!): Move!
+    movesOfGeneration(generation: Generation!): [Move]!
+    pokemonById(pokemonId: Int!): Pokemon!
+    pokemonOfGeneration(after: Int, first: Int, generation: Generation!, pokemonFilter: PokemonFilterInput): PokemonConnection!
+}
+
+type Stat {
+    baseStat: Int
+    effort: Int!
+    name: String
+}
+
+type Type {
+    id: Int!
+    name: String
+}
+
+type VerboseEffect {
+    effect: String!
+    language: NamedApiResource!
+    shortEffect: String!
+}
+
+enum Generation {
+    GEN_I
+    GEN_II
+    GEN_III
+    GEN_IV
+    GEN_V
+    GEN_VI
+    GEN_VII
+}
+
+enum OrderField {
+    ID
+    NAME
+}
+
+input PokemonFilterInput {
+    nameContains: String
+    nameEquals: String
+}

@@ -1,0 +1,9 @@
+query MovesScreen {
+    movesOfGeneration(generation: GEN_I) {
+        id
+        name
+        type {
+            name
+        }
+    }
+}

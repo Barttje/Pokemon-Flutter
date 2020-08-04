@@ -1,0 +1,12 @@
+query PokemonScreen {
+    pokemonOfGeneration(generation: GEN_I) {
+        pokemon(orderBy: ID) {
+            id
+            name
+            image
+            types {
+                name
+            }
+        }
+    }
+}

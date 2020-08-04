@@ -1,0 +1,15 @@
+query MovesDetails($id: Int!) {
+    moveById(moveId: $id) {
+        name
+        effectEntries {
+            effect
+        }
+        power
+        effectChance
+        accuracy
+        pp
+        type {
+            name
+        }
+    }
+}

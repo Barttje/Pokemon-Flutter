@@ -1,0 +1,8 @@
+query ItemListScreen {
+    itemsOfGeneration(generation: GEN_I) {
+        name
+        id
+        image
+        effect
+    }
+}
