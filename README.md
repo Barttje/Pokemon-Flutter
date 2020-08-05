@@ -1,6 +1,7 @@
 # Pokedex
 
-Pokedex project based on the following desing: https://www.figma.com/file/CQENrwwA1HMNnhVOJanoJ1/pokedex-app-iphone-x-daniel-motta
+Pokedex project based on the following [design](https://www.figma.com/file/CQENrwwA1HMNnhVOJanoJ1/pokedex-app-iphone-x-daniel-motta)
+: 
 
 # Demo
 
